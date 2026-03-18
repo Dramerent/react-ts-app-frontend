@@ -31,8 +31,8 @@ export function CreateCardForm(){
     const [strings, setstrings] = useState<StringsType[]>([])
     useEffect(() =>{
         const func = async () => {
-            setShops(await axios.get("http://localhost:3002/app/allShops", {withCredentials: true}).then((el) => el.data))
-            setstrings(await axios.get("http://localhost:3002/app/allStrings", {withCredentials: true}).then((el) => el.data))
+            setShops(await axios.get("https://react-ts-app-backend.onrender.com/app/allShops", {withCredentials: true}).then((el) => el.data))
+            setstrings(await axios.get("https://react-ts-app-backend.onrender.com/app/allStrings", {withCredentials: true}).then((el) => el.data))
         }
         func()
     }, [])
@@ -42,7 +42,7 @@ export function CreateCardForm(){
                 <h1>Создание формы гитары</h1>
                 <form className="create-card-form__form" onSubmit={(e) => {
                         e.preventDefault();
-                        axios.post("http://localhost:3002/app/postCardInfo", postGuitar)
+                        axios.post("https://react-ts-app-backend.onrender.com/app/postCardInfo", postGuitar)
                         .then(() => nav('/'))
                         .catch((err: AxiosError) => setError((el) => ({...el, guitar_error: err?.response?.data as string})))
                     }}>
@@ -76,7 +76,7 @@ export function CreateCardForm(){
                 <h1>Создание формы магазина</h1>
                 <form className="create-card-form__form" onSubmit={(e) => {
                     e.preventDefault();
-                    axios.post("http://localhost:3002/app/postShopInfo", postShop)
+                    axios.post("https://react-ts-app-backend.onrender.com/app/postShopInfo", postShop)
                     .then(() => nav('/'))
                     .catch((err: AxiosError) => setError((el) => ({...el, shop_error: err?.response?.data as string})))
                 }}>
@@ -98,7 +98,7 @@ export function CreateCardForm(){
 
                 <form className="create-card-form__form" onSubmit={(e) => {
                         e.preventDefault();
-                        axios.post("http://localhost:3002/app/postStringInfo", postStrings)
+                        axios.post("https://react-ts-app-backend.onrender.com/app/postStringInfo", postStrings)
                         .then(() => nav('/'))
                         .catch((err) => setError((el) => ({...el, string_error: err.response?.data as string})))
                     }}>
