@@ -4,15 +4,14 @@ import { Link } from "react-router-dom"
 import type { AllInfoType } from "../../types/Types"
 
 export function FullCard(){
-
-    const {cardsInfo} = useContext(Context) 
-    const localStorageNumber: number = Number(localStorage.getItem('guitar_id'))
-    const oneCardInfo: AllInfoType | undefined = cardsInfo.find((el) => el.guitar_id === localStorageNumber)
     
     const {getAllInfo} = useContext(Context)
     useEffect(() =>{
         getAllInfo()
     }, [])
+    const {cardsInfo} = useContext(Context) 
+    const localStorageNumber: number = Number(localStorage.getItem('guitar_id'))
+    const oneCardInfo: AllInfoType | undefined = cardsInfo.find((el) => el.guitar_id === localStorageNumber)
    
     if(oneCardInfo?.guitar_name)return(
         <>
