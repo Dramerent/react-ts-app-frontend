@@ -12,7 +12,7 @@ export function FullCard(){
     const {cardsInfo} = useContext(Context) 
     const localStorageNumber: number = Number(localStorage.getItem('guitar_id'))
     const oneCardInfo: AllInfoType | undefined = cardsInfo.find((el) => el.guitar_id === localStorageNumber)
-   
+    console.log(oneCardInfo)
     if(oneCardInfo?.guitar_name)return(
         <>
             <Link to= '../' onClick={() =>{localStorage.removeItem('guitar_id')}}>назад</Link>
