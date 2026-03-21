@@ -8,13 +8,17 @@ export function FullCard(){
     const {getAllInfo} = useContext(Context)
     useEffect(() =>{
         getAllInfo()
+        console.log("получение данных для полной карточки")
     }, [])
     const {cardsInfo} = useContext(Context) 
     const localStorageNumber: number = Number(localStorage.getItem('guitar_id'))
     const oneCardInfo: AllInfoType | undefined = cardsInfo.find((el) => el.guitar_id === localStorageNumber)
-    console.log(oneCardInfo)
+    
     if(oneCardInfo?.guitar_name)return(
         <>
+        {
+            console.log(oneCardInfo)
+        }
             <Link to= '../' onClick={() =>{localStorage.removeItem('guitar_id')}}>назад</Link>
             <h1>{oneCardInfo.guitar_name}</h1>
             <h2>{oneCardInfo.shop.shop_name}</h2>
@@ -23,6 +27,9 @@ export function FullCard(){
     )
     else return(
         <>
+         {
+            console.log(oneCardInfo)
+        }
             <Link to='/' onClick={() =>{localStorage.removeItem('guitar_id')}}>назад</Link>
             <h1>загрузка</h1>
         </>
